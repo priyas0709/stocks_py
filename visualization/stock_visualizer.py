@@ -5,8 +5,7 @@ class StockVisualizer:
     @staticmethod
     def plot_price_and_volume(stock: Stock):
         """Create a plot with price and volume"""
-        fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 8),
-                                     height_ratios=[2, 1])
+        fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 8), height_ratios=[2, 1])
 
         # Plot closing price
         ax1.plot(stock.data.index, stock.get_closing_prices(), 'b-')
@@ -29,13 +28,11 @@ class StockVisualizer:
         plt.figure(figsize=(12, 6))
 
         # Plot closing price
-        plt.plot(stock.data.index, stock.get_closing_prices(),
-                label='Closing Price', alpha=0.5)
+        plt.plot(stock.data.index, stock.get_closing_prices(), label='Closing Price', alpha=0.5)
 
         # Plot moving average
         moving_avg = stock.get_closing_prices().rolling(window=window).mean()
-        plt.plot(stock.data.index, moving_avg,
-                label=f'{window}-day Moving Average', color='orange')
+        plt.plot(stock.data.index, moving_avg, label=f'{window}-day Moving Average', color='orange')
 
         plt.title(f'{stock.symbol} Stock Price with Moving Average')
         plt.ylabel('Price ($)')
